@@ -1,6 +1,6 @@
 export const GAME_TITLE = 'Kiras eigenes Wordle'
 
-export const WIN_MESSAGES = ['Gut gemacht!', 'Mega!', 'Richtig nice!']
+export const WIN_MESSAGES = ['Gut gemacht!', 'Mega!', 'Sehr gut!']
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Nicht genug Buchstaben :('
 export const WORD_NOT_FOUND_MESSAGE = 'Das Wort gibt es leider nicht :/'
 export const CORRECT_WORD_MESSAGE = (solution: string) =>
