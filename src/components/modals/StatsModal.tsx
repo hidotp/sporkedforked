@@ -1,12 +1,8 @@
-import { ClockIcon, ShareIcon } from '@heroicons/react/outline'
+import { ClockIcon } from '@heroicons/react/outline'
 import { format } from 'date-fns'
 import Countdown from 'react-countdown'
 
-import {
-  DATE_LOCALE,
-  ENABLE_ARCHIVED_GAMES,
-  ENABLE_MIGRATE_STATS,
-} from '../../constants/settings'
+import { DATE_LOCALE, ENABLE_ARCHIVED_GAMES } from '../../constants/settings'
 import {
   ARCHIVE_GAMEDATE_TEXT,
   GUESS_DISTRIBUTION_TEXT,
@@ -37,7 +33,6 @@ export const StatsModal = ({
   isLatestGame,
   isGameLost,
   isGameWon,
-  handleMigrateStatsButton,
   numberOfGuessesMade,
 }: Props) => {
   if (gameStats.totalGames <= 0) {

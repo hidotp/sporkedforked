@@ -28,14 +28,11 @@ import {
 import { useAlert } from './context/AlertContext'
 import { isInAppBrowser } from './lib/browser'
 import {
-  getStoredIsHighContrastMode,
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
-  setStoredIsHighContrastMode,
 } from './lib/localStorage'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
-  findFirstUnusedReveal,
   getGameDate,
   getIsLatestGame,
   isWinningWord,
@@ -49,9 +46,6 @@ import {
 function App() {
   const isLatestGame = getIsLatestGame()
   const gameDate = getGameDate()
-  const prefersDarkMode = window.matchMedia(
-    '(prefers-color-scheme: dark)'
-  ).matches
 
   const { showError: showErrorAlert, showSuccess: showSuccessAlert } =
     useAlert()
@@ -59,10 +53,8 @@ function App() {
   const [isGameWon, setIsGameWon] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isDatePickerModalOpen, setIsDatePickerModalOpen] = useState(false)
-  const [isMigrateStatsModalOpen, setIsMigrateStatsModalOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
   const [isGameLost, setIsGameLost] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(true)
 
   const [isRevealing, setIsRevealing] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
@@ -241,7 +233,6 @@ function App() {
             isGameWon={isGameWon}
             handleMigrateStatsButton={() => {
               setIsStatsModalOpen(false)
-              setIsMigrateStatsModalOpen(true)
             }}
             numberOfGuessesMade={guesses.length}
           />

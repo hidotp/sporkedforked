@@ -1,9 +1,4 @@
-import {
-  CalendarIcon,
-  ChartBarIcon,
-  CogIcon,
-  InformationCircleIcon,
-} from '@heroicons/react/outline'
+import { CalendarIcon, ChartBarIcon } from '@heroicons/react/outline'
 
 import { ENABLE_ARCHIVED_GAMES } from '../../constants/settings'
 import { GAME_TITLE } from '../../constants/strings'
