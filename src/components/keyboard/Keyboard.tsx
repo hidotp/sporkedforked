@@ -14,6 +14,8 @@ type Props = {
   isRevealing?: boolean
 }
 
+const regex = /[A-ZÄÖÜ]/g
+
 export const Keyboard = ({
   onChar,
   onDelete,
@@ -43,7 +45,8 @@ export const Keyboard = ({
       } else {
         const key = localeAwareUpperCase(e.key)
         // TODO: check this test if the range works with non-english letters
-        if (key.length === 1 && key >= 'A' && key <= 'Z') {
+        console.log(key, regex.test(key))
+        if (key.length === 1 && regex.test(key)) {
           onChar(key)
         }
       }
@@ -57,7 +60,7 @@ export const Keyboard = ({
   return (
     <div>
       <div className="mb-1 flex justify-center">
-        {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map((key) => (
+        {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'Ü'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -68,7 +71,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="mb-1 flex justify-center">
-        {['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map((key) => (
+        {['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ö', 'Ä'].map((key) => (
           <Key
             value={key}
             key={key}
