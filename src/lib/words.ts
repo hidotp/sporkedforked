@@ -127,12 +127,12 @@ export const getWordOfDay = (index: number) => {
   }
 
   const sunday = new Date('2026-04-05')
-  if (new Date() == sunday) {
+  if (new Date() === sunday) {
     return localeAwareUpperCase('oster')
   }
 
   const monday = new Date('2026-04-06')
-  if (new Date() == monday) {
+  if (new Date() === monday) {
     return localeAwareUpperCase('hasen')
   }
 
