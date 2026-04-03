@@ -1,15 +1,14 @@
 export const GAME_TITLE = 'Kiras eigenes Wordle'
 
-export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
-export const GAME_COPIED_MESSAGE = 'Game copied to clipboard'
+export const WIN_MESSAGES = ['Gut gemacht!', 'Mega!', 'Richtig nice!']
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Nicht genug Buchstaben :('
 export const WORD_NOT_FOUND_MESSAGE = 'Das Wort gibt es leider nicht :/'
 export const CORRECT_WORD_MESSAGE = (solution: string) =>
-  `The word was ${solution}`
+  `Das Wort war ${solution}`
 export const WRONG_SPOT_MESSAGE = (guess: string, position: number) =>
-  `Must use ${guess} in position ${position}`
+  `Musst ${guess} in Position ${position} nutzen`
 export const NOT_CONTAINED_MESSAGE = (letter: string) =>
-  `Guess must contain ${letter}`
+  `Der Versuch muss ${letter} beinhalten`
 export const ENTER_TEXT = 'Enter'
 export const DELETE_TEXT = 'Löschen'
 export const STATISTICS_TITLE = 'Statistiken'
@@ -19,8 +18,6 @@ export const TOTAL_TRIES_TEXT = 'Gesamte Anzahl von Versuchen'
 export const SUCCESS_RATE_TEXT = 'Erfolgsrate'
 export const CURRENT_STREAK_TEXT = 'Jetzige Streak'
 export const BEST_STREAK_TEXT = 'Beste Streak'
-export const DISCOURAGE_INAPP_BROWSER_TEXT =
-  "You are using an embedded browser and may experience problems sharing or saving your results. We encourage you rather to use your device's default browser."
 
 export const DATEPICKER_TITLE = 'Choose a past date'
 export const DATEPICKER_CHOOSE_TEXT = 'Choose'

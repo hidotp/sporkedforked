@@ -14,19 +14,16 @@ import { StatsModal } from './components/modals/StatsModal'
 import { Navbar } from './components/navbar/Navbar'
 import {
   DATE_LOCALE,
-  DISCOURAGE_INAPP_BROWSERS,
   MAX_CHALLENGES,
   REVEAL_TIME_MS,
 } from './constants/settings'
 import {
   CORRECT_WORD_MESSAGE,
-  DISCOURAGE_INAPP_BROWSER_TEXT,
   NOT_ENOUGH_LETTERS_MESSAGE,
   WIN_MESSAGES,
   WORD_NOT_FOUND_MESSAGE,
 } from './constants/strings'
 import { useAlert } from './context/AlertContext'
-import { isInAppBrowser } from './lib/browser'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
@@ -80,15 +77,6 @@ function App() {
   }, [])
 
   const [stats, setStats] = useState(() => loadStats())
-
-  useEffect(() => {
-    DISCOURAGE_INAPP_BROWSERS &&
-      isInAppBrowser() &&
-      showErrorAlert(DISCOURAGE_INAPP_BROWSER_TEXT, {
-        persist: false,
-        durationMs: 7000,
-      })
-  }, [showErrorAlert])
 
   const clearCurrentRowClass = () => {
     setCurrentRowClass('')
