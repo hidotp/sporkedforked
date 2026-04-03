@@ -14,7 +14,7 @@ type Props = {
   isRevealing?: boolean
 }
 
-const regex = /[A-ZÄÖÜ]/g
+const regex = /[A-ZÄÖÜ]/
 
 export const Keyboard = ({
   onChar,
@@ -45,7 +45,6 @@ export const Keyboard = ({
       } else {
         const key = localeAwareUpperCase(e.key)
         // TODO: check this test if the range works with non-english letters
-        console.log(key, regex.test(key))
         if (key.length === 1 && regex.test(key)) {
           onChar(key)
         }
