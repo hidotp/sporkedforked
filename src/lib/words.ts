@@ -119,8 +119,21 @@ export const getIndex = (gameDate: Date) => {
 }
 
 export const getWordOfDay = (index: number) => {
+  const customWord = ''
+
+  if (customWord) return localeAwareUpperCase(customWord)
   if (index < 0) {
     throw new Error('Invalid index')
+  }
+
+  const sunday = new Date('2026-04-05')
+  if (new Date() == sunday) {
+    return localeAwareUpperCase('oster')
+  }
+
+  const monday = new Date('2026-04-06')
+  if (new Date() == monday) {
+    return localeAwareUpperCase('hasen')
   }
 
   return localeAwareUpperCase(WORDS[index % WORDS.length])

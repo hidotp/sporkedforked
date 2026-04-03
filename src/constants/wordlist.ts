@@ -649,6 +649,8 @@ export const WORDS = [
   'harfe',
   'harke',
   'härte',
+  'hasen',
+  'oster',
   'haube',
   'hauch',
   'hauen',

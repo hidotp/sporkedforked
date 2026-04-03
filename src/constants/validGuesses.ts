@@ -1,5 +1,7 @@
 export const VALID_GUESSES = [
   'aales',
+  'oster',
+  'hasen',
   'aalst',
   'aalte',
   'aases',
