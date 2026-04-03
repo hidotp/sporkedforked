@@ -1,4 +1,4 @@
-export const GAME_TITLE = 'Kiras eigenes Wordle'
+export const GAME_TITLE = 'Kiras Wordle'
 
 export const WIN_MESSAGES = ['Gut gemacht!', 'Mega!', 'Sehr gut!']
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Nicht genug Buchstaben :('
