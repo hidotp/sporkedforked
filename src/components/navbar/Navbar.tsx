@@ -1,6 +1,5 @@
-import { CalendarIcon, ChartBarIcon } from '@heroicons/react/outline'
+import { ChartBarIcon } from '@heroicons/react/outline'
 
-import { ENABLE_ARCHIVED_GAMES } from '../../constants/settings'
 import { GAME_TITLE } from '../../constants/strings'
 
 type Props = {
