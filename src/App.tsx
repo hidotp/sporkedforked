@@ -1,7 +1,5 @@
 import './App.css'
 
-import { ClockIcon } from '@heroicons/react/outline'
-import { format } from 'date-fns'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 import { useEffect, useState } from 'react'
 import Div100vh from 'react-div-100vh'
@@ -9,14 +7,9 @@ import Div100vh from 'react-div-100vh'
 import { AlertContainer } from './components/alerts/AlertContainer'
 import { Grid } from './components/grid/Grid'
 import { Keyboard } from './components/keyboard/Keyboard'
-import { DatePickerModal } from './components/modals/DatePickerModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { Navbar } from './components/navbar/Navbar'
-import {
-  DATE_LOCALE,
-  MAX_CHALLENGES,
-  REVEAL_TIME_MS,
-} from './constants/settings'
+import { MAX_CHALLENGES, REVEAL_TIME_MS } from './constants/settings'
 import {
   CORRECT_WORD_MESSAGE,
   NOT_ENOUGH_LETTERS_MESSAGE,
@@ -30,26 +23,21 @@ import {
 } from './lib/localStorage'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
-  getGameDate,
   getIsLatestGame,
   isWinningWord,
   isWordInWordList,
-  setGameDate,
   solution,
-  solutionGameDate,
   unicodeLength,
 } from './lib/words'
 
 function App() {
   const isLatestGame = getIsLatestGame()
-  const gameDate = getGameDate()
 
   const { showError: showErrorAlert, showSuccess: showSuccessAlert } =
     useAlert()
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
-  const [isDatePickerModalOpen, setIsDatePickerModalOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
   const [isGameLost, setIsGameLost] = useState(false)
 
@@ -178,19 +166,7 @@ function App() {
   return (
     <Div100vh>
       <div className="flex h-full flex-col">
-        <Navbar
-          setIsStatsModalOpen={setIsStatsModalOpen}
-          setIsDatePickerModalOpen={setIsDatePickerModalOpen}
-        />
-
-        {!isLatestGame && (
-          <div className="flex items-center justify-center">
-            <ClockIcon className="h-6 w-6 stroke-gray-600 dark:stroke-gray-300" />
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              {format(gameDate, 'd MMMM yyyy', { locale: DATE_LOCALE })}
-            </p>
-          </div>
-        )}
+        <Navbar setIsStatsModalOpen={setIsStatsModalOpen} />
 
         <div className="mx-auto flex w-full grow flex-col px-1 pt-2 pb-8 sm:px-6 md:max-w-7xl lg:px-8 short:pb-2 short:pt-2">
           <div className="flex grow flex-col justify-center pb-6 short:pb-2">
@@ -221,15 +197,6 @@ function App() {
               setIsStatsModalOpen(false)
             }}
             numberOfGuessesMade={guesses.length}
-          />
-          <DatePickerModal
-            isOpen={isDatePickerModalOpen}
-            initialDate={solutionGameDate}
-            handleSelectDate={(d) => {
-              setIsDatePickerModalOpen(false)
-              setGameDate(d)
-            }}
-            handleClose={() => setIsDatePickerModalOpen(false)}
           />
           <AlertContainer />
         </div>
