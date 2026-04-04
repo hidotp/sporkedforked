@@ -1,16 +1,12 @@
-import { ClockIcon } from '@heroicons/react/outline'
-import { format } from 'date-fns'
 import Countdown from 'react-countdown'
 
-import { DATE_LOCALE, ENABLE_ARCHIVED_GAMES } from '../../constants/settings'
 import {
-  ARCHIVE_GAMEDATE_TEXT,
   GUESS_DISTRIBUTION_TEXT,
   NEW_WORD_TEXT,
   STATISTICS_TITLE,
 } from '../../constants/strings'
 import { GameStats } from '../../lib/localStorage'
-import { solutionGameDate, tomorrow } from '../../lib/words'
+import { tomorrow } from '../../lib/words'
 import { Histogram } from '../stats/Histogram'
 import { StatBar } from '../stats/StatBar'
 import { BaseModal } from './BaseModal'
