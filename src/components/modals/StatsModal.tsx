@@ -53,7 +53,7 @@ export const StatsModal = ({
       handleClose={handleClose}
     >
       <StatBar gameStats={gameStats} />
-      <h4 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
+      <h4 className="text-lg font-medium leading-6 ">
         {GUESS_DISTRIBUTION_TEXT}
       </h4>
       <Histogram
@@ -64,28 +64,12 @@ export const StatsModal = ({
       />
       {(isGameLost || isGameWon) && (
         <div className="mt-5 columns-2 items-center items-stretch justify-center text-center sm:mt-6">
-          <div className="inline-block w-full text-left">
-            {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (
-              <div>
-                <h5>{NEW_WORD_TEXT}</h5>
-                <Countdown
-                  className="text-lg font-medium text-gray-900 dark:text-gray-100"
-                  date={tomorrow}
-                  daysInHours={true}
-                />
-              </div>
-            )}
-            {ENABLE_ARCHIVED_GAMES && !isLatestGame && (
-              <div className="mt-2 inline-flex">
-                <ClockIcon className="mr-1 mt-2 mt-1 h-5 w-5 stroke-black dark:stroke-white" />
-                <div className="mt-1 ml-1 text-center text-sm sm:text-base">
-                  <strong>{ARCHIVE_GAMEDATE_TEXT}:</strong>
-                  <br />
-                  {format(solutionGameDate, 'd MMMM yyyy', {
-                    locale: DATE_LOCALE,
-                  })}
-                </div>
-              </div>
+          <div className="w-full">
+            {isLatestGame && (
+              <>
+                <div className="flex-grow">{NEW_WORD_TEXT}</div>
+                <Countdown className="" date={tomorrow} daysInHours={true} />
+              </>
             )}
           </div>
         </div>

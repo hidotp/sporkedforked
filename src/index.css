@@ -25,6 +25,10 @@
   animation-fill-mode: backwards;
 }
 
+.modal {
+  background-color: var(--default-cell-bg-color);
+}
+
 .cell-reveal.absent {
   animation-name: revealAbsentCharCell;
 }
@@ -90,9 +94,14 @@ button.absent {
   background-color: var(--present-cell-bg-color);
 }
 
-.empty {
+.empty,
+.histogram {
   border-color: var(--default-cell-border-color);
   background-color: #3b3d3e;
+}
+
+.currentday {
+  background-color: var(--correct-cell-bg-color);
 }
 
 @keyframes revealAbsentCharCell {
