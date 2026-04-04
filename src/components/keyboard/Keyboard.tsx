@@ -44,7 +44,6 @@ export const Keyboard = ({
         onDelete()
       } else {
         const key = localeAwareUpperCase(e.key)
-        // TODO: check this test if the range works with non-english letters
         if (key.length === 1 && regex.test(key)) {
           onChar(key)
         }
