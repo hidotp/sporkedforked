@@ -112,7 +112,29 @@ export const getIndex = (gameDate: Date) => {
   return index
 }
 
+const specialWords = new Map<number, string>([
+  [new Date('2026-04-05').getTime(), 'oster'],
+  [new Date('2026-04-06').getTime(), 'suche'],
+  [new Date('2026-04-09').getTime(), 'grill'],
+  [new Date('2026-04-14').getTime(), 'reise'],
+  [new Date('2026-10-07').getTime(), 'traum'],
+])
+
+const getWordFromMap = (date: Date) => {
+  const word = specialWords.get(date.getTime())
+
+  return word
+}
+
+const createEmptyToday = () => {
+  const date = new Date()
+  date.setHours(2, 0, 0, 0)
+
+  return date
+}
+
 export const getWordOfDay = (index: number) => {
+  const today = createEmptyToday()
   const customWord = ''
 
   if (customWord) return localeAwareUpperCase(customWord)
@@ -120,26 +142,15 @@ export const getWordOfDay = (index: number) => {
     throw new Error('Invalid index')
   }
 
-  const sunday = new Date('2026-04-05')
-  if (new Date() === sunday) {
-    return localeAwareUpperCase('oster')
-  }
-
-  const monday = new Date('2026-04-06')
-  if (new Date() === monday) {
-    return localeAwareUpperCase('hasen')
+  const specialWord = getWordFromMap(today)
+  if (specialWord) {
+    return localeAwareUpperCase(specialWord)
   }
 
   return localeAwareUpperCase(WORDS[index % WORDS.length])
 }
 
 export const getSolution = (gameDate: Date) => {
-  let shuffled = WORDS.map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value)
-
-  console.log(shuffled)
-
   const nextGameDate = getNextGameDate(gameDate)
   const index = getIndex(gameDate)
   const wordOfTheDay = getWordOfDay(index)
