@@ -1071,6 +1071,7 @@ export const WORDS = [
   'rauch',
   'höhle',
   'grill',
+  'daten',
   'geige',
   'krams',
   'scham',

@@ -473,6 +473,7 @@ export const VALID_GUESSES = [
   'därme',
   'darms',
   'datex',
+  'daten',
   'daure',
   'david',
   'davis',
