@@ -120,6 +120,7 @@ const specialWords = new Map<number, string>([
   [new Date('2026-04-14').getTime(), 'reise'],
   [new Date('2026-04-17').getTime(), 'adler'],
   [new Date('2026-04-26').getTime(), 'sechs'],
+  [new Date('2026-05-08').getTime(), 'bühne'],
   [new Date('2026-10-07').getTime(), 'traum'],
 ])
 
