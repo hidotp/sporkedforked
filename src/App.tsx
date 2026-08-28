@@ -80,19 +80,22 @@ function App() {
 
   useEffect(() => {
     if (isGameWon) {
+      const delayMs = REVEAL_TIME_MS * solution.length
+
+      if (isTravelGame(solutionGameDate)) {
+        const timeout = window.setTimeout(() => {
+          setIsTravelInviteOpen(true)
+        }, delayMs)
+
+        return () => window.clearTimeout(timeout)
+      }
+
       const winMessage =
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
-      const delayMs = REVEAL_TIME_MS * solution.length
 
       showSuccessAlert(winMessage, {
         delayMs,
-        onClose: () => {
-          if (isTravelGame(solutionGameDate)) {
-            setIsTravelInviteOpen(true)
-            return
-          }
-          setIsStatsModalOpen(true)
-        },
+        onClose: () => setIsStatsModalOpen(true),
       })
     }
 
