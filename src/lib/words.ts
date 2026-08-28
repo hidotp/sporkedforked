@@ -112,6 +112,8 @@ export const getIndex = (gameDate: Date) => {
   return index
 }
 
+const TRAVEL_GAME_DATE = new Date('2026-08-29').getTime()
+
 const specialWords = new Map<number, string>([
   [new Date('2026-04-05').getTime(), 'oster'],
   [new Date('2026-04-06').getTime(), 'suche'],
@@ -122,8 +124,12 @@ const specialWords = new Map<number, string>([
   [new Date('2026-04-26').getTime(), 'sechs'],
   [new Date('2026-05-08').getTime(), 'bühne'],
 [new Date('2026-06-20').getTime(), 'braut'],
+  [TRAVEL_GAME_DATE, 'reise'],
   [new Date('2026-10-07').getTime(), 'traum'],
 ])
+
+export const isTravelGame = (gameDate: Date) =>
+  gameDate.getTime() === TRAVEL_GAME_DATE
 
 const getWordFromMap = (date: Date) => {
   const word = specialWords.get(date.getTime())

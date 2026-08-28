@@ -8,6 +8,7 @@ import { AlertContainer } from './components/alerts/AlertContainer'
 import { Grid } from './components/grid/Grid'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { StatsModal } from './components/modals/StatsModal'
+import { TravelInviteModal } from './components/modals/TravelInviteModal'
 import { Navbar } from './components/navbar/Navbar'
 import { MAX_CHALLENGES, REVEAL_TIME_MS } from './constants/settings'
 import {
@@ -24,9 +25,11 @@ import {
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   getIsLatestGame,
+  isTravelGame,
   isWinningWord,
   isWordInWordList,
   solution,
+  solutionGameDate,
   unicodeLength,
 } from './lib/words'
 
@@ -38,6 +41,7 @@ function App() {
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
+  const [isTravelInviteOpen, setIsTravelInviteOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
   const [isGameLost, setIsGameLost] = useState(false)
 
@@ -82,7 +86,13 @@ function App() {
 
       showSuccessAlert(winMessage, {
         delayMs,
-        onClose: () => setIsStatsModalOpen(true),
+        onClose: () => {
+          if (isTravelGame(solutionGameDate)) {
+            setIsTravelInviteOpen(true)
+            return
+          }
+          setIsStatsModalOpen(true)
+        },
       })
     }
 
@@ -197,6 +207,10 @@ function App() {
               setIsStatsModalOpen(false)
             }}
             numberOfGuessesMade={guesses.length}
+          />
+          <TravelInviteModal
+            isOpen={isTravelInviteOpen}
+            handleClose={() => setIsTravelInviteOpen(false)}
           />
           <AlertContainer />
         </div>
