@@ -2,6 +2,7 @@ import {
   addDays,
   differenceInDays,
   formatISO,
+  isSameDay,
   parseISO,
   startOfDay,
 } from 'date-fns'
@@ -129,7 +130,7 @@ const specialWords = new Map<number, string>([
 ])
 
 export const isTravelGame = (gameDate: Date) =>
-  gameDate.getTime() === TRAVEL_GAME_DATE
+  isSameDay(gameDate, new Date(TRAVEL_GAME_DATE))
 
 const getWordFromMap = (date: Date) => {
   const word = specialWords.get(date.getTime())
